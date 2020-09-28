@@ -6,6 +6,7 @@ use AccountsModel;
 
 class Users extends BaseController
 {
+    
 	public function index()
 	{
         helper('form');
