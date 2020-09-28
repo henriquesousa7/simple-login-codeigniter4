@@ -50,13 +50,11 @@ class Users extends BaseController
                 echo view('login/loginError');
                 echo view('templates/footer');
             }
-
         } else {
             echo view('templates/header');
             echo view('login/loginError');
             echo view('templates/footer');
         }
-
     }
 
     public function responseRegister()
@@ -71,7 +69,8 @@ class Users extends BaseController
             'senha' => 'required|min_length[8]|max_length[255]'
         ];
 
-        if ($this->validate($rules)) {
+        if ($this->validate($rules)) 
+        {
             $model->insert([
                 'usuario' => $this->request->getVar('usuario'),
                 'email' => $this->request->getVar('email'),
