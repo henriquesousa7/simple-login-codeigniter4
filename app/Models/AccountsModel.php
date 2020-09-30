@@ -9,8 +9,13 @@ class AccountsModel extends Model
 
     protected $allowedFields = ['usuario', 'senha', 'email'];
 
-    public function getAccount(string $email, string $senha): array 
+    public function getAccounts(string $email = null, string $senha = null): array 
     {
+
+        if ($email === null && $senha === null) {
+            return $this->findAll();
+        }
+
         $sql = ['email' => $email, 'senha' => $senha];
 
         return $this->where($sql)->first();

@@ -42,7 +42,7 @@ class Users extends BaseController
             $email = $this->request->getVar('email');
             $senha = $this->request->getVar('senha');
 
-            if ($model->getAccount($email, $senha)) {
+            if ($model->getAccounts($email, $senha)) {
                 echo view('templates/header');
                 echo view('login/loginSuccess');
                 echo view('templates/footer');
@@ -85,5 +85,16 @@ class Users extends BaseController
             echo view('login/registerError');
             echo view('templates/footer');
         }
+    }
+
+    public function allusers(){
+
+        $model = new AccountsModel();
+
+        $data = [ 'users' => $model->getAccounts()];
+
+        echo view('templates/header');
+        echo view('login/allusers', $data);
+        echo view('templates/footer');
     }
 }
